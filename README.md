@@ -62,22 +62,31 @@ MCP_AUTH_TOKEN=your-secret-token npm start
 
 ## Connecting to AI Clients
 
-To use this remote MCP server in **Cursor** or **Claude Desktop**, add the following configuration:
-
-### Cursor / Claude Desktop (SSE Configuration)
+### 1. Cursor / Claude Desktop (SSE UI)
 
 Add a new MCP server with type `SSE`:
 
 - **Name:** Dynamic Site MCP
-- **URL:** `https://your-deployed-app.railway.app/sse`
-- **Headers:**
-  ```json
-  {
-    "Authorization": "Bearer your-secret-token"
-  }
-  ```
+- **URL:** `https://your-deployed-app.vercel.app/mcp/sse`
 
-### Manual Configuration (claude_desktop_config.json)
+### 2. Gemini CLI
+
+To use this server with **Gemini CLI**, add it to your configuration:
+
+```bash
+gemini config add-mcp dynamic-site https://your-deployed-app.vercel.app/mcp/sse
+```
+
+### 3. Claude Code
+
+For **Claude Code**, you can connect via the SSE URL during the login or config phase:
+
+```bash
+claude config mcp add dynamic-site https://your-deployed-app.vercel.app/mcp/sse
+```
+
+### 4. Manual Configuration (claude_desktop_config.json)
+...
 
 ```json
 {
